@@ -9,7 +9,7 @@ class Window:
         self.root.title(title)
         self.root.resizable(resizable[0], resizable[1])
         self.root.iconbitmap(icon)
-        self.root['bg'] = '#D2D9DB'
+        self.root['bg'] = '#323232'
 
     def draw_widget(self):
         def add_digit(digit):
@@ -48,19 +48,20 @@ class Window:
             calc.insert(0, 0)
 
         def make_operation_button(operation):
-            return Button(self.root, text=operation, font='Arial 13', bd=5,  fg='red',
+            return Button(self.root, text=operation, font='Arial 13', bd=0, bg='#323232',  fg='#FFA310',
                           command=lambda: add_operation(operation))
 
         def make_calc_button(operation):
-            return Button(self.root, text=operation, font='Arial 13', bd=5,  fg='red',
+            return Button(self.root, text=operation, font='Arial 13', bd=0, bg='#323232',  fg='#FFA310',
                           command=calculate)
 
         def make_clear_button(operation):
-            return Button(self.root, text=operation, font='Arial 13', bd=5,  fg='red',
+            return Button(self.root, text=operation, font='Arial 13', bd=0, bg='#323232',  fg='#FFA310',
                           command=clear)
 
         def make_button(digit):
-            return Button(self.root, text=digit, font='Arial 13', bd=5, command=lambda: add_digit(digit))
+            return Button(self.root, text=digit, font='Arial 13', bd=0, bg='#323232', fg='white',
+                          command=lambda: add_digit(digit))
 
         def press_key(event):
             if event.char.isdigit():
@@ -72,7 +73,7 @@ class Window:
 
         self.root.bind('<Key>', press_key)
 
-        calc = Entry(self.root, justify=RIGHT, font='Arial 15', width=15)
+        calc = Entry(self.root, justify=RIGHT, font='Arial 15', width=15, bd=0)
         calc.insert(0, 0)
         calc.grid(row=0, column=0, columnspan=4, stick='we', padx=5)
 
